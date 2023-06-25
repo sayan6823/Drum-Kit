@@ -5,12 +5,14 @@ for(var i=0; i<docLength;i++){
     document.querySelectorAll(".drum")[i].addEventListener('click', function () {
         var butttonInnerHTMl=this.innerHTML;
         makeSound(butttonInnerHTMl);
+        buttonAnimation(buttonInnerHTML);
     });
 }
 
 
 document.addEventListener("keypress",function(event){
         makeSound(event.key);
+        buttonAnimation(event.key);
 })
 
 
@@ -49,6 +51,16 @@ function makeSound(key){
 
     }
 }
+
+function buttonAnimation(event){
+    var activeButton=document.querySelector("."+event);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
+}
+
 
 
 
